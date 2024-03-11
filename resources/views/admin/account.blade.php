@@ -53,12 +53,12 @@
                 <!-- end modal admin registration -->
             </div>
             <div class="card-body">
-                {{ $dataTable->table() }}
+            {{ $usersDataTable->table() }}
             </div>
         </div>
     </div>
 @endsection
  
 @push('scripts')
-    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+{{ $usersDataTable->scripts() }}
 @endpush

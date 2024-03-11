@@ -2,7 +2,7 @@
 
 namespace App\DataTables\admin;
 
-use App\Models\role;
+use App\Models\Admin\Role;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -62,16 +62,16 @@ class roleDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
             Column::make('id'),
             Column::make('role_name'),
             Column::make('added_by'),
             Column::make('created_at'),
             Column::make('updated_at'),
+            Column::computed('action')
+            ->exportable(false)
+            ->printable(false)
+            ->width(60)
+            ->addClass('text-center'),
         ];
     }
 
@@ -81,5 +81,15 @@ class roleDataTable extends DataTable
     protected function filename(): string
     {
         return 'role_' . date('YmdHis');
+    }
+
+    public function table()
+    {
+        return $this->builder()->table();
+    }
+    
+    public function scripts()
+    {
+        return $this->builder()->scripts();
     }
 }

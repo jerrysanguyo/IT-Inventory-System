@@ -38,12 +38,12 @@
                 <!-- end modal admin registration -->
             </div>
             <div class="card-body">
-                {{ $dataTable->table() }}
+                {{ $roleDataTable->table() }}
             </div>
         </div>
     </div>
 @endsection
  
 @push('scripts')
-    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+    {{ $roleDataTable->scripts() }}
 @endpush

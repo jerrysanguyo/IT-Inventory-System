@@ -9,8 +9,8 @@ use App\DataTables\admin\UsersDataTable;
 
 class AccountsController extends Controller
 {
-    public function accounts(UsersDataTable $dataTable)
+    public function accounts(UsersDataTable $usersDataTable)
     {
-        return $dataTable->render('admin.account');
+        return $usersDataTable->render('admin.account', ['usersDataTable' => $usersDataTable]);
     }
 }
