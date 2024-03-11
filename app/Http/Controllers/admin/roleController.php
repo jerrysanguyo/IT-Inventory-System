@@ -20,8 +20,7 @@ class roleController extends Controller
             'role_name'=>'required|string'
         ]);
         $data = [
-            'role_name' => $request->role_name,
-            'added_by' => Auth::User()->id
+            'role_name' => $request->role_name
         ];
         $newRole=Role::create($data);
 

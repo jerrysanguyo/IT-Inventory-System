@@ -64,7 +64,6 @@ class roleDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('role_name'),
-            Column::make('added_by'),
             Column::make('created_at'),
             Column::make('updated_at'),
             Column::computed('action')

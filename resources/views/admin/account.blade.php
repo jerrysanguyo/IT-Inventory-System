@@ -16,7 +16,9 @@
                                 <h1 class="modal-title" id="exampleModalLabel">Account registration</h1>
                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="" method="post">
+                            <form action="{{ route('admin-register') }}" method="post">
+                                @csrf
+                                @method('POST')
                                 <div class="modal-body">
                                     <div class="col-md-12">
                                         <div class="mb-3">
@@ -33,12 +35,17 @@
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="forPassword" class="form-label">Password:</label>
+                                            <input type="password" name="password" id="forPassword" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="forRole" class="form-label">Role:</label>
-                                            // fetch from db
+                                            <select name="role_Id" id="forRole" class="form-select">
+                                                @foreach($listRoles as $role)
+                                                    <option value="{{ $role->id }}">{{ $role->role_name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

@@ -32,6 +32,12 @@
                         </li>
                     @endif
                 @else
+
+                @if (Auth::user()->role_Id == 1)
+                <a href="{{ route('dashboard-admin') }}" class="navbar-brand">IT Inventory</a>
+                @else
+                <a href="{{ route('dashboard-encoder') }}" class="navbar-brand">IT Inventory</a>
+                @endif
                 <a href="#" class="navbar-brand">IT Inventory</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -54,7 +60,7 @@
                                     CMS for types
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ route('role-list') }}" class="dropdown-item">Role</a></li>
+                                    <li><a href="{{ route('role') }}" class="dropdown-item">Role</a></li>
                                     <li><a href="#" class="dropdown-item">Category</a></li>
                                     <li><a href="#" class="dropdown-item">Something</a></li>
                                 </ul>
