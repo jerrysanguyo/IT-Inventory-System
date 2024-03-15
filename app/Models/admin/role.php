@@ -10,7 +10,10 @@ class Role extends Model
     use HasFactory;
 
     protected $table = 'role';
-    protected $fillable = [
-        'role_name'
-    ];
+    protected $fillable = ['role_name'];
+
+    public static function getAllRoles()
+    {
+        return self::all();
+    }
 }

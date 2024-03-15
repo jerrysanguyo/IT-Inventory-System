@@ -8,18 +8,26 @@ use App\Models\User;
 use App\Models\admin\Role;
 use Yajra\DataTables\Facades\DataTables;
 use App\DataTables\admin\UsersDataTable;
+use App\Services\UserService;
+use App\Http\Requests\Admin\RegisterRequest;
 
 class AccountsController extends Controller
 {
     public function accounts(UsersDataTable $usersDataTable)
     {
-        $listRoles = Role::all();
-        return $usersDataTable->render('admin.account', ['usersDataTable' => $usersDataTable, 'listRoles' => $listRoles]);
+        $listRoles = Role::getAllRoles();
+        $users = User::getAllUsers();
+
+        return $usersDataTable->render('admin.account', [
+            'listRoles' => $listRoles,
+            'users' => $users, 
+        ]);
     }
 
-    public function accounts()
+    public function adminRegister(RegisterRequest $request, UserService $userService) 
     {
-        $users = User::all();
-        return view('admin.account', compact('users'));
+        $user = $userService->createUser($request->all());
+
+        return redirect()->route('account-list')->with('success', 'User registered successfully');
     }
 }
