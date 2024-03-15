@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\admin\roleController;
 use App\Http\Controllers\admin\adminDashboardController;
 use App\Http\Controllers\encoder\encoderDashboardController;
 use App\Http\Controllers\unauthorizedAccessController;
@@ -29,6 +31,9 @@ Auth::routes();
 Route::middleware(['auth', adminRole::class])->group(function () {
     Route::get('/dashboard-admin', [adminDashboardController::class, 'index'])->name('dashboard-admin');
     Route::get('/accounts', [AccountsController::class, 'accounts'])->name('account-list');
+    Route::post('/accounts/registration', [AccountsController::class, 'adminRegister'])->name('admin-register');
+    Route::get('/role', [roleController::class, 'roleIndex'])->name('role-list');
+    Route::post('role/create', [roleController:: class, 'addRole'])->name('role-add');
 });
 
 Route::middleware(['auth', encoderRole::class])->group(function () {
@@ -36,3 +41,4 @@ Route::middleware(['auth', encoderRole::class])->group(function () {
 });
 
 Route::get('/Unauthorized', [UnauthorizedAccessController::class, 'unauthorized'])->name('Unauthorized-access');
+Route::get('/register', function () { return view('auth.register');})->name('register');
