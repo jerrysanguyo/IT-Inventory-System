@@ -13,9 +13,10 @@ class AccountsController extends Controller
     {
         return view('admin.index');
     }
-
-    public function accounts(UsersDataTable $dataTable)
+    
+    public function accounts()
     {
-        return $dataTable->render('admin.account');
+        $users = User::all();
+        return view('admin.account', compact('users'));
     }
 }
