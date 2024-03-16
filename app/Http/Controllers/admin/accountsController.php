@@ -18,16 +18,17 @@ class AccountsController extends Controller
         $listRoles = Role::getAllRoles();
         $users = User::getAllUsers();
 
-        return $usersDataTable->render('admin.account', [
-            'listRoles' => $listRoles,
-            'users' => $users, 
-        ]);
+        return $usersDataTable->render('admin.account', compact(
+            'listRoles',
+            'users', 
+            'usersDataTable'
+        ));
     }
 
     public function adminRegister(RegisterRequest $request, UserService $userService) 
     {
         $user = $userService->createUser($request->all());
 
-        return redirect()->route('account-list')->with('success', 'User registered successfully');
+        return redirect()->route('admin.accounts.list')->with('success', 'User registered successfully');
     }
 }

@@ -16,7 +16,7 @@
                                 <h1 class="modal-title" id="exampleModalLabel">Account registration</h1>
                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="{{ route('admin-register') }}" method="post">
+                            <form action="{{ route('admin.accounts.register') }}" method="post">
                                 @csrf
                                 @method('POST')
                                 <div class="modal-body">

@@ -7,23 +7,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\DataTables\admin\roleDataTable;
+use App\Http\Requests\Admin\RoleRequest;
+use App\Services\RoleService;
 
 class roleController extends Controller
 {
     public function roleIndex(RoleDataTable $roleDataTable)
     {
-        return $roleDataTable->render('admin.role', ['roleDataTable' => $roleDataTable]);
+        $listOfRoles = Role::getAllRoles();
+
+        return $roleDataTable->render('admin.role', compact(
+            'listOfRoles', 
+            'roleDataTable'
+        ));
     }
 
-    public function addRole(Request $request) {
-        $request->validate([
-            'role_name'=>'required|string'
-        ]);
-        $data = [
-            'role_name' => $request->role_name
-        ];
-        $newRole=Role::create($data);
+    public function addRole(RoleRequest $request, RoleService $roleService) {
 
-        return redirect()->route('role-list');
+        $newRole = $roleService->createRole($request->all());
+        
+        return redirect()->route('admin.role.list');
     }
 }

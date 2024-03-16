@@ -16,7 +16,7 @@
                                 <h1 class="modal-title" id="exampleModalLabel">Role insertion</h1>
                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="{{ route('role-add') }}" method="post">
+                            <form action="{{ route('admin.role.add') }}" method="post">
                                 @csrf
                                 @method('POST')
                                 <div class="modal-body">
@@ -38,7 +38,39 @@
                 <!-- end modal admin registration -->
             </div>
             <div class="card-body">
-                {{ $roleDataTable->table() }}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Role Name</th>
+                            <th>Date Created</th>
+                            <th>Date Updated</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($listOfRoles as $Roles)
+                        <tr>
+                            <td>{{ $Roles->id }}</td>
+                            <td>{{ $Roles->role_name }}</td>
+                            <td>{{ $Roles->created_at }}</td>
+                            <td>{{ $Roles->updated_at }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <hr>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
