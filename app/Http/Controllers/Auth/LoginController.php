@@ -24,8 +24,6 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             case 2:
                 return redirect()->route('encoder.dashboard');
-            // default:
-            //     return redirect()->route('default.route'); 
         }
     }
 }

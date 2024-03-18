@@ -23,4 +23,16 @@ class UserService
             'role_Id' => $data['role_Id'],
         ]);
     }
+
+    public function editAccount(array $data)
+    {
+        $user = User::find($data['id']); 
+        if ($user) {
+            $user->name = $data['name'];
+            $user->email = $data['email'];
+            $user->password = Hash::make($data['password']);
+            $user->save();
+            return $user;
+        }
+    }
 }

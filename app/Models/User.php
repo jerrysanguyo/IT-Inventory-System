@@ -20,4 +20,9 @@ class User extends Authenticatable
     {
         return self::all();
     }
+
+    public static function getUserById($attribute, $value)
+    {
+        return self::where($attribute, $value)->first();
+    }
 }

@@ -30,6 +30,10 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
             ->name('dashboard');
         Route::get('/accounts', [AccountsController::class, 'accounts'])
             ->name('accounts.list');
+        Route::get('/accounts/details/{acc}',[AccountsController::class, 'accountsDetails'])
+            ->name('accounts.details');
+        Route::put('accounts/details/change-pw/{acc}', [AccountsController::class, 'accountsChangePw'])
+            ->name('accounts.change.pw');
         Route::post('/accounts/registration', [AccountsController::class, 'adminRegister'])
             ->name('accounts.register');
         Route::get('/role', [RoleController::class, 'roleIndex'])
