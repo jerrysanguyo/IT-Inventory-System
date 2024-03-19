@@ -61,7 +61,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('admin.role.list') }}" class="dropdown-item">Role</a></li>
-                                    <li><a href="#" class="dropdown-item">Category</a></li>
+                                    <li><a href="{{ route('admin.category') }}" class="dropdown-item">Category</a></li>
                                     <li><a href="#" class="dropdown-item">Something</a></li>
                                 </ul>
                             </li>
