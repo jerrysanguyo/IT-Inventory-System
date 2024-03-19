@@ -16,7 +16,7 @@
                                 <h1 class="modal-title" id="exampleModalLabel">Category insertion</h1>
                                 <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="{{ route('admin.category') }}" method="post">
+                            <form action="{{ route('admin.add.category') }}" method="post">
                                 @csrf
                                 @method('POST')
                                 <div class="modal-body">

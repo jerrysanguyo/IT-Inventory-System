@@ -10,6 +10,7 @@ class CategoryService
     {
         return category::create([
             'category_name' => $data['category_name'],
+            'added_by' => $data['added_by'],
         ]);
     }
 }

@@ -43,6 +43,8 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
             ->name('role.add');
         Route::get('/category', [categoryController::class, 'category'])
             ->name('category');
+        Route::post('/category/add',[categoryController::class, 'addCategory'])
+            ->name('add.category');
     });
 });
 

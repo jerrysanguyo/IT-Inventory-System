@@ -9,7 +9,7 @@ class category extends Model
 {
     use HasFactory;
 
-    protected $talbe='category';
+    protected $table='category';
     protected $fillable=['category_name', 'added_by'];
 
     public static function getAllCategory()

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\admin\category;
+use App\Http\Requests\admin\CategoryRequest;
+use App\Services\CategoryService;
 
 class categoryController extends Controller
 {
@@ -13,10 +15,13 @@ class categoryController extends Controller
         return view('admin.category');
     }
 
-    public function addCategory(CategoryRequest $request, CategoryService $CategoryService)
+    public function addCategory(CategoryRequest $request, CategoryService $categoryService)
     {
-        $category = $CategoryService->createCategory($request->all());
+        $data = $request->all();
+        $data['added_by'] = auth()->id();
 
-        return redirect->route('admin.category')->with('success', 'Category has been added.');
+        $category = $categoryService->createCategory($data);
+
+        return redirect()->route('admin.category')->with('success', 'Category has been added.');
     }
 }
