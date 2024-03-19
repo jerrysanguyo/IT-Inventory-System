@@ -15,7 +15,7 @@ class EditAccountRequest extends FormRequest
     {
         return [
             'name' => ['Required', 'String', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $this->acc],
             'password' => ['required', 'string', 'min:8'],
         ];
     }

@@ -88,7 +88,7 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{{ route('admin.accounts.details', ['acc' => $user->id]) }}">View details</a></li>
-                                        <li><a class="dropdown-item" href="#">Assign to Admin</a></li>
+                                        <li><a class="dropdown-item" href="# ">Assign to Admin</a></li>
                                         <li><a class="dropdown-item" href="#">Assign to User</a></li>
                                         <hr>
                                         <li><a class="dropdown-item" href="#">Delete</a></li>

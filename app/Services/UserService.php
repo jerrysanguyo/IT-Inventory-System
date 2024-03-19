@@ -24,14 +24,14 @@ class UserService
         ]);
     }
 
-    public function editAccount(array $data)
+    public function editAccount(array $data, $user)
     {
-        $user = User::find($data['id']); 
         if ($user) {
-            $user->name = $data['name'];
-            $user->email = $data['email'];
-            $user->password = Hash::make($data['password']);
-            $user->save();
+            $user->update([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
             return $user;
         }
     }

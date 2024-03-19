@@ -28,7 +28,7 @@ Route::get('/Unauthorized', [UnauthorizedAccessController::class, 'unauthorized'
 
 Route::middleware(['auth', AdminRole::class])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])
             ->name('dashboard');
         Route::get('/accounts', [AccountsController::class, 'accounts'])
             ->name('accounts.list');
@@ -53,7 +53,7 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
 
 Route::middleware(['auth', EncoderRole::class])->group(function () {
     Route::prefix('encoder')->name('encoder.')->group(function (){
-        Route::get('/dashboard-encoder', [EncoderDashboardController::class, 'index'])
+        Route::get('/dashboard', [EncoderDashboardController::class, 'index'])
             ->name('dashboard');
     });
 });

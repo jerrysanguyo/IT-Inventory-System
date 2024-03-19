@@ -38,10 +38,14 @@ class AccountsController extends Controller
         return view('admin.accountDetails', compact('acc'));
     }
 
-    public function accountsChangePw(EditAccountRequest $request, UserService $userService, User $acc)
+    public function accountsChangePw(EditAccountRequest $request, UserService $userService, $acc)
     {
         $validated = $request->validated();
-        $user = $userService->editAccount($validated, $acc);
+        $user = User::find($acc);
+        if (!$user) {
+            return redirect()->route('admin.accounts.list')->with('error', 'User not found.');
+        }
+        $userService->editAccount($validated, $user);
 
         return redirect()->route('admin.accounts.list')->with('success', 'Account details have been changed.');
     }
