@@ -8,14 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('role', function (Blueprint $table) {
+        Schema::create('tb_role', function (Blueprint $table) {
             $table->id();
-        $table->string('role_name')->notNull();
-        $table->timestamps();
+            $table->string('role_name')->notNull();
+            $table->timestamps();
         });
     }
     public function down(): void
     {
-        Schema::dropIfExists('role');
+        Schema::dropIfExists('tb_role');
     }
 };

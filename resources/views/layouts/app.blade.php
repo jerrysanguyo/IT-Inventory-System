@@ -62,7 +62,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('admin.role.list') }}" class="dropdown-item">Role</a></li>
                                     <li><a href="{{ route('admin.category') }}" class="dropdown-item">Category</a></li>
-                                    <li><a href="#" class="dropdown-item">Something</a></li>
+                                    <li><a href="{{ route('admin.equipment') }}" class="dropdown-item">Equipment</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
