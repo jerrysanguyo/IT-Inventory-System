@@ -15,7 +15,7 @@ class encoderRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role_Id === 2) { // 2 encoder
+        if (auth()->check() && auth()->user()->role_id === 2) { // 2 encoder
             return $next($request);
         }
         

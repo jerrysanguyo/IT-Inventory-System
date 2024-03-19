@@ -15,7 +15,7 @@ class adminRole
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role_Id === 1) { // 1 admin
+        if (auth()->check() && auth()->user()->role_id === 1) { // 1 admin
             return $next($request);
         }
         

@@ -26,25 +26,22 @@ class AccountsController extends Controller
         ));
     }
 
-    public function adminRegister(RegisterRequest $request, UserService $userService) 
+    public function adminRegister(RegisterRequest $request, UserService $userService)
     {
-        $user = $userService->createUser($request->all());
+        $user = $userService->createUser($request->validated()); 
 
         return redirect()->route('admin.accounts.list')->with('success', 'User registered successfully');
     }
 
-    public function accountsDetails($acc)
+    public function accountsDetails(User $acc)
     {
-        $user = User::getUserById('id', $acc);
-        
-        return view('admin.accountDetails', compact('user'));
+        return view('admin.accountDetails', compact('acc'));
     }
 
-    public function accountsChangePw(EditAccountRequest $request, UserService $userService, $acc)
+    public function accountsChangePw(EditAccountRequest $request, UserService $userService, User $acc)
     {
         $validated = $request->validated();
-        $validated['id'] = $acc; 
-        $user = $userService->editAccount($validated);
+        $user = $userService->editAccount($validated, $acc);
 
         return redirect()->route('admin.accounts.list')->with('success', 'Account details have been changed.');
     }

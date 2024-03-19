@@ -32,11 +32,10 @@
                         </li>
                     @endif
                 @else
-
-                @if (Auth::user()->role_Id == 1)
-                <a href="{{ route('admin.dashboard') }}" class="navbar-brand">IT Inventory</a>
-                @else
-                <a href="{{ route('encoder.dashboard') }}" class="navbar-brand">IT Inventory</a>
+                    @if (Auth::user()->role_id === 1)
+                    <a href="{{ route('admin.dashboard') }}" class="navbar-brand">IT Inventory</a>
+                    @else
+                    <a href="{{ route('encoder.dashboard') }}" class="navbar-brand">IT Inventory</a>
                 @endif
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

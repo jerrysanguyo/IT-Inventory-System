@@ -1,35 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\admin\category;
-use App\Http\Requests\admin\CategoryRequest;
+use App\Models\Admin\Category; // Adjusted namespace to follow PSR-4 standards
+use App\Http\Requests\Admin\CategoryRequest;
 use App\Services\CategoryService;
-use App\DataTables\admin\CategoryDataTables;
+use App\DataTables\Admin\CategoryDataTables; // Adjust namespace
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
-    public function category(CategoryDataTables $categoryDataTables) 
+    public function index(CategoryDataTables $categoryDataTables) 
     {
-        $listOfCategory = category::getAllCategory();
-
-        return $categoryDataTables->render(
-                'admin.category', compact(
-                    'listOfCategory',
-                    'categoryDataTables'
-                )
-        );
+        // Assuming CategoryDataTables already handles listing categories,
+        // no need to fetch categories manually if it's being done within DataTables
+        return $categoryDataTables->render('admin.categories.index');
     }
 
-    public function addCategory(CategoryRequest $request, CategoryService $categoryService)
+    public function store(CategoryRequest $request, CategoryService $categoryService)
     {
-        $data = $request->all();
-        $data['added_by'] = auth()->id();
+        $data = $request->validated(); // Use validated data directly
+        $data['added_by'] = auth()->id(); // Assuming you want to track who added the category
 
-        $category = $categoryService->createCategory($data);
+        $categoryService->createCategory($data);
 
-        return redirect()->route('admin.category')->with('success', 'Category has been added.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category has been added.');
     }
 }

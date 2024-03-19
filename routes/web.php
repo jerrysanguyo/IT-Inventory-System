@@ -16,18 +16,19 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Auth::routes(['register' => false]); 
+Auth::routes(['register' => true]); 
 
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
+
 
 Route::get('/Unauthorized', [UnauthorizedAccessController::class, 'unauthorized'])
     ->name('Unauthorized-access');
 
 Route::middleware(['auth', AdminRole::class])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::get('/dashboard', [AdminDashboardController::class, 'index'])
+        Route::get('/dashboard-admin', [AdminDashboardController::class, 'index'])
             ->name('dashboard');
         Route::get('/accounts', [AccountsController::class, 'accounts'])
             ->name('accounts.list');
@@ -53,6 +54,6 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
 Route::middleware(['auth', EncoderRole::class])->group(function () {
     Route::prefix('encoder')->name('encoder.')->group(function (){
         Route::get('/dashboard-encoder', [EncoderDashboardController::class, 'index'])
-            ->name('encoder.dashboard');
+            ->name('dashboard');
     });
 });

@@ -8,12 +8,12 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table('tb_users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->unsignedBigInteger('role_id');
             
             $table->foreign('role_id')
                 ->references('id') 
-                ->on('tb_role')
+                ->on('role')
                 ->onUpdate('cascade')
                 ->onDelete('cascade')
                 ->after('password');
@@ -22,7 +22,7 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::table('tb_users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['role_id']);
             $table->dropColumn('role_id'); 
         });
