@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <input type="submit" class="btn btn-primary" value="Add role">
+                                    <input type="submit" class="btn btn-primary" value="Add category">
                                 </div>
                             </form>
                         </div>
@@ -42,17 +42,40 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Role Name</th>
+                            <th>Category Name</th>
                             <th>Date Created</th>
                             <th>Date Updated</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        @foreach($listOfCategory as $category)
+                        <tr>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->category_name }}</td>
+                            <td>{{ $category->created_at }}</td>
+                            <td>{{ $category->updated_at }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <hr>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-@endsection
+    @endsection
+ 
+@push('scripts')
+    {{ $categoryDataTables->scripts() }}
+@endpush

@@ -7,12 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\admin\category;
 use App\Http\Requests\admin\CategoryRequest;
 use App\Services\CategoryService;
+use App\DataTables\admin\CategoryDataTables;
 
 class categoryController extends Controller
 {
-    public function category() 
+    public function category(CategoryDataTables $categoryDataTables) 
     {
-        return view('admin.category');
+        $listOfCategory = category::getAllCategory();
+
+        return $categoryDataTables->render(
+                'admin.category', compact(
+                    'listOfCategory',
+                    'categoryDataTables'
+                )
+        );
     }
 
     public function addCategory(CategoryRequest $request, CategoryService $categoryService)
