@@ -55,7 +55,7 @@
                                 
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.accounts.list') }}" class="nav-link">Inventory</a>
+                                <a href="{{ route('admin.inventory') }}" class="nav-link">Inventory</a>
                                 
                             </li>
                             <li class="nav-item dropdown">
@@ -66,6 +66,7 @@
                                     <li><a href="{{ route('admin.role.list') }}" class="dropdown-item">Role</a></li>
                                     <li><a href="{{ route('admin.category') }}" class="dropdown-item">Category</a></li>
                                     <li><a href="{{ route('admin.equipment') }}" class="dropdown-item">Equipment</a></li>
+                                    <li><a href="{{ route('admin.department') }}" class="dropdown-item">Department</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">

@@ -10,6 +10,8 @@ use App\Http\Controllers\UnauthorizedAccessController;
 use App\Http\Controllers\Admin\AccountsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EquipmentController;
+use App\Http\Controllers\admin\InventoryController;
+use App\Http\Controllers\admin\DepartmentController;
 use App\Http\Middleware\Admin\AdminRole;
 use App\Http\Middleware\Encoder\EncoderRole;
 
@@ -53,6 +55,10 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
             ->name('add.equipment');
         Route::get('/inventory',[InventoryController::class, 'index'])
             ->name('inventory');
+        Route::get('/department', [DepartmentController::class, 'index'])
+            ->name('department');
+        Route::post('/department/add', [DepartmentController::class, 'addDepartment'])
+            ->name('add.department');
     });
 });
 
