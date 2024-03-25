@@ -127,8 +127,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
+                            <th>Quantity & Unit</th>
                             <th>Equipment name</th>
                             <th>Serial Number</th>
                             <th>Date Created</th>
@@ -138,8 +137,7 @@
                     <tbody>
                         @foreach ($listOfInventory as $inventory)
                             <td>{{ $inventory->id }}</td>
-                            <td>{{ $inventory->quantity }}</td>
-                            <td>{{ $inventory->unit->unit_name }}</td>
+                            <td>{{ $inventory->quantity }} - {{ $inventory->unit->unit_name }}</td>
                             <td>{{ $inventory->equipment_name }}</td>
                             <td>{{ $inventory->serial_number }}</td>
                             <td>{{ $inventory->created_at }}</td>

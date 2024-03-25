@@ -5,7 +5,6 @@ namespace App\Models\admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo; 
-use App\Models\admin\Unit;
 use Illuminate\Database\Eloquent\Collection;
 
 class Inventory extends Model
@@ -35,6 +34,21 @@ class Inventory extends Model
     public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class, 'unit_id', 'id');
+    }
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'department_id', 'id');
+    }
+
+    public function user(): BelongTo
+    {
+        return $this->belongTo(User::class, 'issued_by', 'id');
+    }
+
+    public function equipment(): BelongTo
+    {
+        return $this->belongTo(Equipment::class, 'equipment_id', 'id');
     }
 
 }
