@@ -13,24 +13,7 @@ return new class extends Migration
     {
         Schema::create('department', function (Blueprint $table) {
             $table->id();
-            $table->string('equipment_name');
-            $table->foreignId('equipment_id')
-                ->constrained('tbl_equipment')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->string('serial_number');
-            $table->string('remarks');
-            $table->foreignId('department_id')
-                ->constrained('tbl_department')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->string('user');
-            $table->foreignId('issued_by')
-                ->constrined('tbl_users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-            $table->string('received_by');
-            $table->date('date_issued');
+            $table->string('department_name');
             $table->timestamps();
         });
     }
