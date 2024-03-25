@@ -15,18 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('equipment_name');
             $table->foreignId('equipment_id')
-                ->constrained('tbl_equipment')
+                ->constrained('equipment')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('serial_number');
             $table->string('remarks');
             $table->foreignId('department_id')
-                ->constrained('tbl_department')
+                ->constrained('department')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('user');
             $table->foreignId('issued_by')
-                ->constrained('tbl_users')
+                ->constrained('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->string('received_by');
