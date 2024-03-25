@@ -58,12 +58,14 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
             ->name('department');
         Route::post('/department/add', [DepartmentController::class, 'addDepartment'])
             ->name('add.department');
-        Route::get('/inventory',[InventoryController::class, 'index'])
-            ->name('inventory');
         Route::get('/unit', [UnitController::class, 'index'])
             ->name('unit');
         Route::post('/unit/add', [UnitController::class, 'addUnit'])
             ->name('add.unit');
+        Route::get('/inventory',[InventoryController::class, 'index'])
+            ->name('inventory');
+        Route::post('/inventory/add', [InventoryController::class, 'addInventory'])
+            ->name('add.inventory');
     });
 });
 

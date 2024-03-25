@@ -6,13 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('inventory', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('unit_id')
+                ->constrained('unit')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+            $table->integer('quantity');
             $table->string('equipment_name');
             $table->foreignId('equipment_id')
                 ->constrained('equipment')
@@ -34,10 +36,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('inventory');

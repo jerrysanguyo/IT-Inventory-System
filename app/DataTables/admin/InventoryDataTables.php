@@ -81,4 +81,14 @@ class InventoryDataTables extends DataTable
     {
         return 'InventoryDataTables_' . date('YmdHis');
     }
+
+    public function table()
+    {
+        return $this->builder()->table();
+    }
+    
+    public function scripts()
+    {
+        return $this->builder()->scripts();
+    }
 }
