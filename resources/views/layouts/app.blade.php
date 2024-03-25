@@ -67,6 +67,7 @@
                                     <li><a href="{{ route('admin.category') }}" class="dropdown-item">Category</a></li>
                                     <li><a href="{{ route('admin.equipment') }}" class="dropdown-item">Equipment</a></li>
                                     <li><a href="{{ route('admin.department') }}" class="dropdown-item">Department</a></li>
+                                    <li><a href="{{ route('admin.unit') }}" class="dropdown-item">Unit</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
