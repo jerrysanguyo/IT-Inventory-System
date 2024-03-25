@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Encoder\EncoderDashboardController;
 use App\Http\Controllers\UnauthorizedAccessController;
 use App\Http\Controllers\Admin\AccountsController;
-use App\Http\Controllers\admin\categoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EquipmentController;
 use App\Http\Middleware\Admin\AdminRole;
 use App\Http\Middleware\Encoder\EncoderRole;
@@ -43,9 +43,9 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
             ->name('role.list');
         Route::post('/role/create', [RoleController::class, 'addRole'])
             ->name('role.add');
-        Route::get('/category', [categoryController::class, 'category'])
+        Route::get('/category', [CategoryController::class, 'index'])
             ->name('category');
-        Route::post('/category/add',[categoryController::class, 'addCategory'])
+        Route::post('/category/add',[CategoryController::class, 'addCategory'])
             ->name('add.category');
         Route::get('/equipment',[EquipmentController::class, 'equipment'])
             ->name('equipment');

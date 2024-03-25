@@ -60,6 +60,11 @@
                 <!-- end modal admin registration -->
             </div>
             <div class="card-body">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <table id="users-table" class="table">
                     <thead>
                         <tr>

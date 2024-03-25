@@ -38,6 +38,11 @@
                 <!-- end modal admin registration -->
             </div>
             <div class="card-body">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <table class="table" id="equipmentTable">
                     <thead>
                         <tr>
@@ -74,21 +79,16 @@
             </div>
         </div>
     </div>
-
     @push('scripts')
-    <script>
-    $('#equipmentTable').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": "{{ route('admin.equipment') }}",
-        "columns": [
-            { "data": "id" },
-            { "data": "equipment_name" },
-            { "data": "created_at" },
-            { "data": "updated_at" },
-            { "data": "action", "orderable": false, "searchable": false }
-        ]
-    });
-    </script>
+        <script>
+        $(document).ready(function() {
+            $('#equipmentTable').DataTable({
+                "processing": true,
+                "serverSide": false,
+                "pageLength": 10,
+                "order": [[0, "asc"]],
+            });
+        });
+        </script>
     @endpush
 @endsection

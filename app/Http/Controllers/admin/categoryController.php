@@ -13,16 +13,20 @@ class CategoryController extends Controller
 {
     public function index(CategoryDataTables $categoryDataTables) 
     {
-        return $categoryDataTables->render('admin.categories.index');
+        $listOfCategory = category::getAllCategory();
+        return $categoryDataTables->render('admin.category', compact(
+            'listOfCategory',
+            'categoryDataTables'
+        ));
     }
 
-    public function store(CategoryRequest $request, CategoryService $categoryService)
+    public function addCategory(CategoryRequest $request, CategoryService $categoryService)
     {
         $data = $request->validated();
         $data['added_by'] = auth()->id(); 
 
         $categoryService->createCategory($data);
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category has been added.');
+        return redirect()->route('admin.category')->with('success', 'Category has been added.');
     }
 }

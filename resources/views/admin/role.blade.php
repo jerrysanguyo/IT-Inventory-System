@@ -38,7 +38,12 @@
                 <!-- end modal admin registration -->
             </div>
             <div class="card-body">
-                <table class="table">
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <table class="table" id="role-table">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -74,8 +79,16 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script>
+        $(document).ready(function() {
+            $('#role-table').DataTable({
+                "processing": true,
+                "serverSide": false,
+                "pageLength": 10,
+                "order": [[0, "asc"]],
+            });
+        });
+        </script>
+    @endpush
 @endsection
- 
-@push('scripts')
-    {{ $roleDataTable->scripts() }}
-@endpush
