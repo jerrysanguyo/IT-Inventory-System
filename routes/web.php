@@ -9,6 +9,7 @@ use App\Http\Controllers\Encoder\EncoderDashboardController;
 use App\Http\Controllers\UnauthorizedAccessController;
 use App\Http\Controllers\Admin\AccountsController;
 use App\Http\Controllers\admin\categoryController;
+use App\Http\Controllers\Admin\EquipmentController;
 use App\Http\Middleware\Admin\AdminRole;
 use App\Http\Middleware\Encoder\EncoderRole;
 
@@ -48,6 +49,8 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
             ->name('add.category');
         Route::get('/equipment',[EquipmentController::class, 'equipment'])
             ->name('equipment');
+        Route::post('/equipment/add',[EquipmentController::class, 'addEquipment'])
+            ->name('add.equipment');
     });
 });
 

@@ -10,7 +10,7 @@ class category extends Model
     use HasFactory;
 
     protected $table='category';
-    protected $fillable=['category_name', 'added_by'];
+    protected $fillable=['category_name'];
 
     public static function getAllCategory()
     {
