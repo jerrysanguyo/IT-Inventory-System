@@ -51,6 +51,8 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
             ->name('equipment');
         Route::post('/equipment/add',[EquipmentController::class, 'addEquipment'])
             ->name('add.equipment');
+        Route::get('/inventory',[InventoryController::class, 'index'])
+            ->name('inventory');
     });
 });
 
