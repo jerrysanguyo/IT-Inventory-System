@@ -40,4 +40,14 @@ class InventoryController extends Controller
         $inventory = $inventoryService->createInventory($validated);
         return redirect()->route('admin.inventory')->with('success', 'Item has been added to Inventory');
     }
+
+    public function inventoryDetails(Inventory $inventory)
+    {
+        return view('admin.inventoryDetails', compact('inventory'));
+    }
+
+    public function inventoryUpdate()
+    {
+
+    }
 }

@@ -66,6 +66,10 @@ Route::middleware(['auth', AdminRole::class])->group(function () {
             ->name('inventory');
         Route::post('/inventory/add', [InventoryController::class, 'addInventory'])
             ->name('add.inventory');
+        Route::get('/inventory/{inventory}/details',[InventoryController::class, 'inventoryDetails'])
+            ->name('inventory.details');
+        Route::put('/inventory/{inventory}/update',[InventoryController::class, 'inventoryUpdate'])
+            ->name('update.inventory');
     });
 });
 

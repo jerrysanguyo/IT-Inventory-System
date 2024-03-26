@@ -33,22 +33,21 @@ class Inventory extends Model
 
     public function unit(): BelongsTo
     {
-        return $this->belongsTo(Unit::class, 'unit_id', 'id');
+        return $this->belongsTo(Unit::class, 'unit_id')->withDefault();
     }
 
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'department_id', 'id');
+        return $this->belongsTo(Department::class, 'department_id')->withDefault();
     }
 
-    public function user(): BelongTo
+    public function user(): BelongsTo
     {
-        return $this->belongTo(User::class, 'issued_by', 'id');
+        return $this->belongsTo(User::class, 'issued_by')->withDefault();
     }
 
-    public function equipment(): BelongTo
+    public function equipment(): BelongsTo
     {
-        return $this->belongTo(Equipment::class, 'equipment_id', 'id');
+        return $this->belongsTo(Equipment::class, 'equipment_id')->withDefault();
     }
-
 }
